@@ -13,12 +13,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 // Para que navController funcione se requiere de estas importaciones:
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.elarreglador.ud2_07_navigationmultifichero.screens.Home
+
 // Y ademas:
 // en /App/build.gradle.kts agregar esta linea en dependencies:
 //  [versions]
@@ -34,68 +37,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp()
+            Home()
         }
     }
 }
 
 @Composable
-fun MyApp() {
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") { HomeScreen(navController) }
-        composable("detail") { DetailScreen(navController) }
-    }
-}
-
-@Composable
-fun HomeScreen(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Pantalla de Inicio HomeScreen()")
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { navController.navigate("detail") }) {
-            Text("Ir a Detalles")
-        }
-    }
-}
-
-@Composable
-fun DetailScreen(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Pantalla de Detalles")
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(
-            onClick = { navController.navigate("home") }
-        ) {
-            Icon(
-                Icons.Filled.Home,
-                contentDescription = "Check!"
-            )
-            Text("navController.navigate(\"home\")")
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(
-            onClick = { navController.popBackStack() }
-        ) {
-            Icon(
-                Icons.Filled.ArrowBack,
-                contentDescription = "Check!"
-            )
-            Text("navController.popBackStack()")
-        }
-    }
+@Preview(showSystemUi = true)
+fun previoMain() {
+    Home()
 }
