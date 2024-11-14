@@ -15,9 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun Home() {
+fun Home(navController: NavController) {
     Column (
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -30,17 +31,15 @@ fun Home() {
             contentDescription = "Check!"
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Button(onClick = { /*TODO*/ }){
+        Button(
+            onClick = { navController.navigate("notificaciones") }
+        ){
             Text("Nagegar a notificaciones")
         }
-        Button(onClick = { /*TODO*/ }){
+        Button(
+            onClick = { navController.navigate("favoritos") }
+        ){
             Text("Nagegar a favoritos")
         }
     }
-}
-
-@Composable
-@Preview(showSystemUi = true)
-fun previoHome() {
-    Home()
 }

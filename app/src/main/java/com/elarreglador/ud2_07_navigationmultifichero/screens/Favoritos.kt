@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Star
@@ -17,10 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 
 @Composable
-fun Favoritos() {
+fun Favoritos(navController: NavController) {
     Column (
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -32,21 +34,32 @@ fun Favoritos() {
             contentDescription = "Check!"
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Button(onClick = { /*TODO*/ }){
+        Button( // Navegar a la pantalla principal
+            onClick = { navController.navigate("principal") }
+        ){
             Icon(
                 Icons.Filled.Home,
                 contentDescription = "Check!"
             )
-            Text("Nagegar a Home")
+            Text("navController.navigate(\"principal\")")
         }
-        Button(onClick = { /*TODO*/ }){
-            Text("Nagegar a la pantalla de Notificaciones")
+        Button( // Navegar a la pantalla de notificaciones
+            onClick = { navController.navigate("notificaciones") }
+        ){
+            Icon(
+                Icons.Filled.Notifications,
+                contentDescription = "Check!"
+            )
+            Text("navController.navigate(\"notificaciones\")")
+        }
+        Button( // Regresar a la pantalla de la que vienes
+            onClick = { navController.popBackStack() }
+        ){
+            Icon(
+                Icons.Filled.ArrowBack,
+                contentDescription = "Check!"
+            )
+            Text("navController.popBackStack()")
         }
     }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun previoFavoritos() {
-    Favoritos()
 }
