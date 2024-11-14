@@ -13,9 +13,25 @@ import com.elarreglador.ud2_07_navigationmultifichero.screens.Notificaciones
 fun Navegador() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "principal") {
-        // (Apodo para llamar a la ventana) {funcion/pantalla + parametro a usar}
-        composable("principal") { Home(navController) }
-        composable("favoritos") { Favoritos(navController) }
-        composable("notificaciones") { Notificaciones(navController) }
+        // (route es el apodo para llamar a la ventana) {funcion/pantalla + parametro a usar}
+        // En este caso hay tres funciones que NavHost toma a modo de opcion
+
+        composable( // ventana principal o home
+            route = "principal"
+        ) {
+            Home(navController)
+        }
+
+        composable( // ventana de favoritos
+            route = "favoritos"
+        ) {
+            Favoritos(navController)
+        }
+
+        composable( // ventana de notificaciones
+            route = "notificaciones"
+        ) {
+            Notificaciones(navController)
+        }
     }
 }

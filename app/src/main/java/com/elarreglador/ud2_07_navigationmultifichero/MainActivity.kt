@@ -28,9 +28,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Composable
-@Preview(showSystemUi = true)
-fun previoMain() {
-    Navegador()
-}
